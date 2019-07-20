@@ -22,11 +22,12 @@ services:
     image: selenium/hub:3.14.0-gallium
     ports:
       - '4444:4444'
+
   runner:
-    build: .
+    image: quartely-meeting-example-sm2019:latest
     container_name: selenium-test-runner
     links:
       - hub:hub
     volumes:
       - ./:/app
-    command: python3 -m test.py
+    command: python3 test.py
