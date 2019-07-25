@@ -29,5 +29,5 @@ services:
     links:
       - hub:hub
     volumes:
-      - ./:/app
+      - ./selenium:/app
     command: python3 test.py
