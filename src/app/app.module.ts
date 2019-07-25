@@ -15,19 +15,25 @@ import { appRoutes } from './routes';
 // NGRX
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './store';
 import { SeleniumTestEffects } from './store/effects';
 
-
-
-
 @NgModule({
-  imports: [BrowserAnimationsModule, BrowserModule, FormsModule, MaterialModule, StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([SeleniumTestEffects]), RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
-    )],
+  imports: [
+    BrowserAnimationsModule,
+    BrowserModule,
+    FormsModule,
+    MaterialModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({ maxAge: 25 }),
+    EffectsModule.forRoot([SeleniumTestEffects]),
+    RouterModule.forRoot(
+      appRoutes
+      // { enableTracing: true } // <-- debugging purposes only
+    )
+  ],
   declarations: [AppComponent, LoginComponent, HomeComponent],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

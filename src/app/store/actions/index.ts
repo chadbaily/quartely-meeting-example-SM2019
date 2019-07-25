@@ -3,18 +3,17 @@ import { Login, Message } from '../../types';
 
 export enum SeleniumTestAction {
   RequestToLogin = 'Attempting to login',
-  GrantLogin = 'Attempting to login',
+  GrantLogin = 'Attempting to login'
 }
 
 export class RequestToLogin implements Action {
   readonly type = SeleniumTestAction.RequestToLogin;
-  constructor(public readonly payload: Login) { }
+  constructor(public readonly payload: Login) {}
 }
 
 export class GrantLogin implements Action {
   readonly type = SeleniumTestAction.GrantLogin;
-  constructor(public readonly payload: Message) { }
+  constructor(public readonly payload: Message) {}
 }
 
-export type SeleniumTestActions = | RequestToLogin
-  | GrantLogin;
+export type SeleniumTestActions = RequestToLogin | GrantLogin;

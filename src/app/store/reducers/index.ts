@@ -1,4 +1,5 @@
 import * as fromSelenium from '../actions';
+import { Message } from 'src/app/types';
 
 export interface SeleniumTestState {
   isLoggedIn: boolean;
@@ -6,16 +7,21 @@ export interface SeleniumTestState {
 
 const INITIAL_STATE = {
   isLoggedIn: false
-}
+};
 
-export function reducers(state: SeleniumTestState = INITIAL_STATE, action: fromSelenium.SeleniumTestActions): SeleniumTestState {
+export function reducers(
+  state: SeleniumTestState = INITIAL_STATE,
+  action: fromSelenium.SeleniumTestActions
+): SeleniumTestState {
   switch (action.type) {
-
     case fromSelenium.SeleniumTestAction.RequestToLogin:
-    return {...state};
+      return { ...state };
 
     case fromSelenium.SeleniumTestAction.GrantLogin:
-    return {...state, isLoggedIn: action.payload.value};
+      return {
+        ...state,
+        isLoggedIn: (<Message>action.payload).value === 'success'
+      };
 
     default:
       return state;
