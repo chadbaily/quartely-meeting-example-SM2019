@@ -11,21 +11,8 @@ time.sleep(5)
 
 
 class Selenium(unittest.TestCase):
-    # def setUp(self):
-    #     # Create a new instance of the Firefox driver
-    #     self.driver = webdriver.Remote(
-    #         desired_capabilities=DesiredCapabilities.CHROME,
-    #         command_executor="http://hub:4444/wd/hub"
-    #     )
-
-    #     self.driver.implicitly_wait(20)
-
-    # def test_CBT(self):
-    #     self.driver.get(
-    #         'http://crossbrowsertesting.github.io/selenium_example_page.html')
-    #     self.assertEqual("Selenium Test Example Page", self.driver.title)
-    #     self.test_result = 'pass'
-    #     self.driver.quit()
+    
+    # Basic setup for the unit tests
     def setUp(self):
         self.chrome = webdriver.Remote(
             command_executor='http://hub:4444/wd/hub',
@@ -37,6 +24,7 @@ class Selenium(unittest.TestCase):
             desired_capabilities=DesiredCapabilities.FIREFOX)
         self.firefox.implicitly_wait(20)
     
+    # Tear down the unit tests and ensure that both browsers are quit properly
     def tearDown(self):
         self.chrome.quit()
         self.firefox.quit()
