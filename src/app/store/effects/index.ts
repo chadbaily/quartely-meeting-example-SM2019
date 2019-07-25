@@ -9,7 +9,7 @@ import * as fromSelenium from '../actions';
 @Injectable()
 export class SeleniumTestEffects {
 
-  @Effect()
+  @Effect({dispatch: false})
   attemptToLogin$ = this.actions$.pipe(
     ofType(fromSelenium.SeleniumTestAction.RequestToLogin),
     map(action => (<fromSelenium.RequestToLogin>action).payload),
