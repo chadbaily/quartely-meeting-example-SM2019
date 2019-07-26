@@ -26,7 +26,7 @@ SECRET_KEY = '8ws1u%v(0x_0u9%2e$ileoq7g(!#e(j%)_^!p=b5swpmp=)d66'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost','models-api']
 
 
 # Application definition

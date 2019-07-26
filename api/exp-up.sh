@@ -1,0 +1,1 @@
+pip install --upgrade -r requirements.txt && python manage.py makemigrations && python manage.py migrate && mod_wsgi-express start-server --working-directory ./ --reload-on-changes ./api/wsgi.py

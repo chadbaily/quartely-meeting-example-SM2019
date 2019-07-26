@@ -21,6 +21,5 @@ class FoodSerializer(serializers.ModelSerializer):
             'name',
             'description',
             'price',
-            'seller',
             'quanity'
         )
