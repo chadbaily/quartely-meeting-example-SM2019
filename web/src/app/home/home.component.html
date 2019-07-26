@@ -1,3 +1,16 @@
+<h2>Newest Foods:</h2>
+
 <p>
-home works!
+  Here below you can find some of the newest foods currently listed for sale!
 </p>
+
+<div class="row">
+  <div class="card col-md-4 card-space" *ngFor="let food of foods$ | async">
+    <div class="card-body">
+      <h5 class="card-title">{{ food.name }}</h5>
+      <p class="card-text">Description: {{ food.description }}</p>
+      <p class="card-text">Price: ${{ food.price }}</p>
+      <a href="food/{{ food.pk }}/" class="btn btn-primary">Learn More</a>
+    </div>
+  </div>
+</div>

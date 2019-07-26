@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState, selectFoods } from '../store';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  foods$ = this.store.select(state => selectFoods(state));
+  constructor(private store: Store<AppState>, private titleService: Title) {}
 
   ngOnInit() {
+    this.titleService.setTitle('Home');
   }
-
 }

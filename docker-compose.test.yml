@@ -28,6 +28,34 @@ services:
     container_name: selenium-test-runner
     links:
       - hub:hub
+      - web:web
     volumes:
       - ./test:/app
     command: python3 test.py
+
+  models:
+    image: tp33/django
+    container_name: models
+    volumes:
+      - ./models/:/app
+    command: bash models-up.dev.sh
+    ports:
+      - 8001:8000
+  exp:
+    image: tp33/django
+    container_name: exp
+    links:
+      - models:models-api
+    ports:
+      - '8002:8000'
+    volumes:
+      - ./api/:/app
+    command: bash exp-up.dev.sh
+  web:
+    image: quarterly-web-2019
+    container_name: web
+    volumes:
+      - ./web/:/app
+    command: ng serve --host 0.0.0.0
+    ports:
+      - 80:4200

@@ -16,5 +16,12 @@ export class SeleniumTestEffects {
     // mergeMap(payload => console.log('attempt to login'))
     tap(payload => console.log('test: ', payload))
   );
+
+  // @Effect()
+  //   requestToLoadHome$ = this.actions$.pipe(
+  //   ofType(fromSelenium.SeleniumTestAction.RequestToLoadHome),
+  //   tap(()) => this.store.dispatch(new))
+  // );
+  
   constructor(private store: Store<AppState>, private actions$: Actions, ) { }
 }

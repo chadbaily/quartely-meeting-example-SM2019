@@ -1,4 +1,8 @@
-import { ActionReducerMap, createFeatureSelector, createSelector } from '@ngrx/store';
+import {
+  ActionReducerMap,
+  createFeatureSelector,
+  createSelector
+} from '@ngrx/store';
 
 import * as fromSelenium from './reducers';
 
@@ -10,6 +14,16 @@ export const reducers: ActionReducerMap<AppState> = {
   store: fromSelenium.reducers
 };
 
-const getSeleniumTest = createFeatureSelector<AppState, fromSelenium.SeleniumTestState>('store');
+const getSeleniumTest = createFeatureSelector<
+  AppState,
+  fromSelenium.SeleniumTestState
+>('store');
 
-export const selectIsLoggedIn = createSelector(getSeleniumTest, (state: fromSelenium.SeleniumTestState) => state.isLoggedIn);
+export const selectIsLoggedIn = createSelector(
+  getSeleniumTest,
+  (state: fromSelenium.SeleniumTestState) => state.isLoggedIn
+);
+export const selectFoods = createSelector(
+  getSeleniumTest,
+  (state: fromSelenium.SeleniumTestState) => state.foods
+);

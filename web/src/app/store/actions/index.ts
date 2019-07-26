@@ -1,9 +1,11 @@
 import { Action } from '@ngrx/store';
-import { Login, Message } from '../../types';
+import { Login, Message, Food } from '../../types';
 
 export enum SeleniumTestAction {
   RequestToLogin = 'Attempting to login',
-  GrantLogin = 'Attempting to login'
+  GrantLogin = 'Attempting to login',
+  RequestToLoadHome = 'Requesting to load home page content',
+  LoadHome = 'Loading home page content'
 }
 
 export class RequestToLogin implements Action {
@@ -16,4 +18,17 @@ export class GrantLogin implements Action {
   constructor(public readonly payload: Message) {}
 }
 
-export type SeleniumTestActions = RequestToLogin | GrantLogin;
+export class RequestToLoadHome implements Action {
+  readonly type = SeleniumTestAction.RequestToLoadHome;
+}
+
+export class LoadHome implements Action {
+  readonly type = SeleniumTestAction.LoadHome;
+  constructor(public readonly payload: Food[]) {}
+}
+
+export type SeleniumTestActions =
+  | RequestToLogin
+  | GrantLogin
+  | RequestToLoadHome
+  | LoadHome;
