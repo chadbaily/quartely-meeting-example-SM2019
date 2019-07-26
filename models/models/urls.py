@@ -16,8 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from modelsExample import views
-# from modelsExample import api_views, views
+from modelsExample import api_views, views
 
 # View sets have default methods for handling GET/POST/etc, so this is explicitly overriding that
 request_override_map = {
@@ -27,8 +26,15 @@ request_override_map = {
     'delete': 'delete'
 }
 
+# Set up seriallizers
+food_list = api_views.FoodViewSet.as_view(request_override_map)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('modelsExample/', include('modelsExample.urls')),
-    # url(r'^api/foodie/(?P<pk>[0-9]+)', foodie_list, name='foodie-detail'),
+
+    # Get one food
+    url(r'^api/foods/(?P<pk>[0-9]+)', food_list, name='food-detail'),
+    # Get all foods
+    url(r'^api/foods/', food_list, name='food-list'),
 ]
