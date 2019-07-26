@@ -1,0 +1,7 @@
+models:
+  image: tp33/django
+  volumes:
+    - ./models/:/app
+  command: bash models-up.dev.sh
+  ports:
+    - 8000:8000
