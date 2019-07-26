@@ -14,3 +14,16 @@ export interface Food {
   price: number;
   quanity: number;
 }
+
+export interface Drink {
+  pk: number;
+  name: string;
+  description: string;
+  price: number;
+  quanity: number;
+}
+
+export interface HomePage {
+  food: Food[];
+  drink: Drink[]
+}

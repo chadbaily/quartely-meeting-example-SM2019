@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Login, Message, Food } from '../../types';
+import { Login, Message, Food, HomePage } from '../../types';
 
 export enum SeleniumTestAction {
   RequestToLogin = 'Attempting to login',
@@ -24,7 +24,7 @@ export class RequestToLoadHome implements Action {
 
 export class LoadHome implements Action {
   readonly type = SeleniumTestAction.LoadHome;
-  constructor(public readonly payload: Food[]) {}
+  constructor(public readonly payload: HomePage) {}
 }
 
 export type SeleniumTestActions =

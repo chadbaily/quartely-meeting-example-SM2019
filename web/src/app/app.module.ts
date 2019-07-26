@@ -19,9 +19,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { reducers } from './store';
 import { SeleniumTestEffects } from './store/effects';
 
+import { HomeService } from './home/services/home.service';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    HttpClientModule,
     BrowserModule,
     FormsModule,
     MaterialModule,
@@ -33,6 +37,7 @@ import { SeleniumTestEffects } from './store/effects';
       // { enableTracing: true } // <-- debugging purposes only
     )
   ],
+  providers: [HomeService],
   declarations: [AppComponent, LoginComponent, HomeComponent],
   bootstrap: [AppComponent]
 })

@@ -19,6 +19,8 @@ exp:
 web:
   image: quarterly-web-2019
   container_name: web
+  links:
+    - exp:exp-api
   volumes:
     - ./web/:/app
   command: ng serve --host 0.0.0.0

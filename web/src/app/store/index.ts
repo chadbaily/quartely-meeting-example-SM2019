@@ -23,7 +23,7 @@ export const selectIsLoggedIn = createSelector(
   getSeleniumTest,
   (state: fromSelenium.SeleniumTestState) => state.isLoggedIn
 );
-export const selectFoods = createSelector(
+export const selectHomePageContent = createSelector(
   getSeleniumTest,
-  (state: fromSelenium.SeleniumTestState) => state.foods
+  (state: fromSelenium.SeleniumTestState) => state.homeContent
 );

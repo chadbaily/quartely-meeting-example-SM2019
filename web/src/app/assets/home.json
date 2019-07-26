@@ -1,0 +1,34 @@
+{
+  "drink": [
+    {
+      "description": "Its a me, water!",
+      "quanity": 0,
+      "pk": 1,
+      "price": 10.0,
+      "name": "Water"
+    },
+    {
+      "description": "Better water",
+      "quanity": 1,
+      "pk": 2,
+      "price": 11.0,
+      "name": "Ice water"
+    }
+  ],
+  "food": [
+    {
+      "description": "Its some type of pizza!!",
+      "quanity": 100,
+      "pk": 1,
+      "price": 3.0,
+      "name": "Billy's Favorite Pizza"
+    },
+    {
+      "description": "He licks it before giving it out",
+      "quanity": 1,
+      "pk": 2,
+      "price": 0.0,
+      "name": "Joe's Good Ice Crem"
+    }
+  ]
+}

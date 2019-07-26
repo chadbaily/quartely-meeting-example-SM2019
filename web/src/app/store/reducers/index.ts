@@ -1,14 +1,13 @@
 import * as fromSelenium from '../actions';
-import { Message, Food } from 'src/app/types';
+import { Message, Food, HomePage } from 'src/app/types';
 
 export interface SeleniumTestState {
   isLoggedIn: boolean;
-  foods?: Food[]
+  homeContent?: HomePage;
 }
 
 const INITIAL_STATE = {
   isLoggedIn: false
-
 };
 
 export function reducers(
@@ -16,7 +15,6 @@ export function reducers(
   action: fromSelenium.SeleniumTestActions
 ): SeleniumTestState {
   switch (action.type) {
-
     case fromSelenium.SeleniumTestAction.RequestToLoadHome:
     case fromSelenium.SeleniumTestAction.RequestToLogin:
       return { ...state };
@@ -28,7 +26,7 @@ export function reducers(
       };
 
     case fromSelenium.SeleniumTestAction.LoadHome:
-      return {...state, foods: action.payload}
+      return { ...state, homeContent: action.payload };
 
     default:
       return state;
