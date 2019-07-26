@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
-import psycopg2
+# import psycopg2
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,14 +75,23 @@ WSGI_APPLICATION = 'models.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
+# Connecting to an AWS instance
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'QuarterlyMeetingExampleUser',
+#         'USER': 'QuarterlyMeetingExampleUser',
+#         'PASSWORD': 'p(934#$gakj123#%^96',
+#         'HOST': 'quarterlymeetingsm2019.ck6rq4aomxwq.us-east-1.rds.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'QuarterlyMeetingExampleUser',
-        'USER': 'QuarterlyMeetingExampleUser',
-        'PASSWORD': 'p(934#$gakj123#%^96',
-        'HOST': 'quarterlymeetingsm2019.ck6rq4aomxwq.us-east-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
