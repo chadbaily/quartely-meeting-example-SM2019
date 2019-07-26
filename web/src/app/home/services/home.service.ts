@@ -9,8 +9,8 @@ export class HomeService {
   constructor(private httpClient: HttpClient) {}
 
   getHomePage(): Observable<HomePage | any> {
-    // const api = this.httpClient.get('http://localhost:8002/exp/home/');
-    const api = this.httpClient.get('./../../assets/home.json');
+    const api = this.httpClient.get('http://localhost:8002/exp/home/');
+    // const api = this.httpClient.get('./../../assets/home.json');
     console.log(
       api.subscribe(data => {
         return data;
