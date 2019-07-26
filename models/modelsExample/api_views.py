@@ -127,3 +127,109 @@ class FoodViewSet(viewsets.ModelViewSet):
 
             serializer.save()
             return successful_edit_response(serializer.data)
+
+
+""" Drink """
+class DrinkViewSet(viewsets.ModelViewSet):
+    renderer_classes = (JSONRenderer, )
+    queryset = Drink.objects.all()
+    serializer_class = DrinkSerializer
+    model = Drink
+
+    '''
+    __________________________________________________  Delete
+     url: DELETE : <WEBSITE>/api/drink/pk
+     function: Deletes a food item
+    __________________________________________________
+    '''
+
+    def delete(self, request, format=None, pk=None):
+        if pk is None:
+            return missing_id_response()
+        else:
+            try:
+                result = self.model.objects.get(pk=pk)
+                result.delete()
+            except self.model.DoesNotExist:
+                return object_not_found_response()
+            except IntegrityError:
+                return object_is_foreign_key_response()
+
+            return successful_delete_response()
+
+    '''
+    __________________________________________________  get
+     url: GET : <WEBSITE>/api/drink/
+     function: Returns list of all drink
+
+     url: GET : <WEBSITE>/api/drink/pk
+     function: returns details on one drink
+    __________________________________________________
+    '''
+
+    def get(self, request, format=None, pk=None):
+        # print(pk)
+        is_many = True
+        if pk is None:
+            result = self.model.objects.all()
+        else:
+            try:
+                result = self.model.objects.get(pk=pk)
+                # print(result)
+                is_many = False
+            except self.model.DoesNotExist:
+                return object_not_found_response()
+
+        serializer = self.serializer_class(result, many=is_many)
+        return successful_create_response(serializer.data)
+
+    '''
+    __________________________________________________  Post
+     url: POST : <WEBSITE>/api/drink/
+     Body:
+     {
+     "drink": {
+        "seller": 1,
+        "name": "Beluga Caviar",
+        "description": "velvety, salty, briny, little black pearls of delish",
+        "price": 100.0
+    }
+    }
+    function: Creates a seller and user. Associates user to seller
+    __________________________________________________
+    '''
+
+    def post(self, request, format=None, pk=None):
+        if pk is None:
+            serializer = self.serializer_class(data=request.data)
+            if not serializer.is_valid():
+                return invalid_serializer_response(serializer.errors)
+
+            serializer.save()
+            return successful_create_response(serializer.data)
+        else:
+            return colliding_id_response()
+
+    '''
+    __________________________________________________  Put
+     url: PUT : <WEBSITE>/api/drink/pk
+     function: Updates a drink item
+    __________________________________________________
+    '''
+
+    def put(self, request, format=None, pk=None):
+        if pk is None:
+            return missing_id_response()
+        else:
+            try:
+                result = self.model.objects.get(pk=pk)
+            except self.model.DoesNotExist:
+                return object_not_found_response()
+
+            serializer = self.serializer_class(result, data=request.data)
+
+            if not serializer.is_valid():
+                return invalid_serializer_response(serializer.errors)
+
+            serializer.save()
+            return successful_edit_response(serializer.data)

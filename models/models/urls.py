@@ -28,6 +28,7 @@ request_override_map = {
 
 # Set up seriallizers
 food_list = api_views.FoodViewSet.as_view(request_override_map)
+drink_list = api_views.DrinkViewSet.as_view(request_override_map)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,4 +38,9 @@ urlpatterns = [
     url(r'^api/foods/(?P<pk>[0-9]+)', food_list, name='food-detail'),
     # Get all foods
     url(r'^api/foods/', food_list, name='food-list'),
+
+    # Get one drink
+    url(r'^api/drinks/(?P<pk>[0-9]+)', drink_list, name='drink-detail'),
+    # Get all drinks
+    url(r'^api/drinks/', drink_list, name='drink-list'),
 ]
