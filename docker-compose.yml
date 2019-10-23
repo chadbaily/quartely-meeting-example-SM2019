@@ -23,6 +23,6 @@ web:
     - exp:exp-api
   volumes:
     - ./web/:/app
-  command: ng serve --host 0.0.0.0
+  # command: ng serve --host 0.0.0.0
   ports:
-    - 8080:4200
+    - 8080:80
