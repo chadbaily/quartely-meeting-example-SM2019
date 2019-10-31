@@ -1,0 +1,41 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f docker-compose.yml
+    kompose.version: 1.19.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: exp
+  name: exp
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert -f docker-compose.yml
+        kompose.version: 1.19.0 ()
+      creationTimestamp: null
+      labels:
+        io.kompose.service: exp
+    spec:
+      containers:
+      - args:
+        - bash
+        - exp-up.dev.sh
+        image: tp33/django
+        name: exp
+        ports:
+        - containerPort: 8000
+        resources: {}
+        volumeMounts:
+        - mountPath: /app
+          name: exp-claim0
+      restartPolicy: Always
+      volumes:
+      - name: exp-claim0
+        persistentVolumeClaim:
+          claimName: exp-claim0
+status: {}
